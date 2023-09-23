@@ -1,4 +1,4 @@
 import React from "react";
-export default function Home() {
+export default function Title() {
   return <div>test</div>;
 }
