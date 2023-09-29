@@ -10,7 +10,7 @@ import {
 } from "@nextui-org/react";
 export default function Title() {
   return (
-    <Navbar shouldHideOnScroll>
+    <Navbar>
       <NavbarBrand>
         <p className="font-bold text-inherit">XXX</p>
       </NavbarBrand>
