@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Image } from "@nextui-org/react";
+import { Button, Image, Input } from "@nextui-org/react";
 import { Textarea } from "@nextui-org/react";
 import PreviousMap from "postcss/lib/previous-map";
 import AccountPosts from "./AccountPosts";
@@ -26,7 +26,12 @@ export default function AcountInfo() {
             alt={AccountTestData.name + "アイコン画像"}
           />
           <div className="flex justify-center flex-col mx-auto">
-            <h1>{AccountTestData.name}</h1>
+            <Input
+              type="name"
+              label="name"
+              size="lg"
+              value={AccountTestData.name}
+            />
           </div>
         </div>
       </div>
@@ -45,7 +50,7 @@ export default function AcountInfo() {
             }))
           }
         />
-        <Button onClick={test}>test</Button>
+        <Button onClick={test}>変更</Button>
       </div>
       <div>
         <h1 className="text-3xl my-4">過去の投稿</h1>

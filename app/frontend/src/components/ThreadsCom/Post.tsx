@@ -7,9 +7,9 @@ import {
   CardHeader,
   User,
 } from "@nextui-org/react";
-import StarIcon from "../Icons/StarIcon";
 import ReplyIcon from "../Icons/ReplyIcon";
-export default function AccountPosts() {
+import StarIcon from "../Icons/StarIcon";
+export default function Post() {
   return (
     <Card className="border-1 border-black">
       <CardHeader>
