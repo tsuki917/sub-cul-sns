@@ -4,7 +4,7 @@ import React from "react";
 import Menu from "../components/SideMenuCom/Menu";
 import Title from "../components/Title";
 import { Divider } from "@nextui-org/react";
-import Threads from "../components/ThreadsCom/Threads";
+import Threads from "../components/ThreadsCom/Posts";
 export default function Home() {
   return (
     <div>

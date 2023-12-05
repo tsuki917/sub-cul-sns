@@ -21,7 +21,7 @@ export default function AccountPosts() {
         />
       </CardHeader>
       <CardBody className="text-xl">
-        何をやってるんだか何もわかりません。私はどうすればいいんでしょうか？あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+        進捗ゼロ!GOの勉強中+設計から頑張ってみようと考えてます。
       </CardBody>
       <CardFooter>
         <div className="flex justify-around border-1 w-full border-black">
