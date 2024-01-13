@@ -1,13 +1,6 @@
-import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Input,
-  User,
-} from "@nextui-org/react";
+import { Button, Input } from "@nextui-org/react";
 import axios, { AxiosResponse } from "axios";
+import { postType } from "@/app/types/thread.type";
 import React, {
   ChangeEvent,
   FormEvent,
@@ -15,18 +8,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import ReplyIcon from "../Icons/ReplyIcon";
-import StarIcon from "../Icons/StarIcon";
 import Post from "./Post";
-type postType = {
-  Author: string;
-  Content: string;
-  Comments: commentType[];
-};
-type commentType = {
-  Author: string;
-  Content: string;
-};
 
 export default function Threads() {
   const [name, setName] = useState<string>("");
@@ -89,14 +71,6 @@ export default function Threads() {
         />
         <Button type="submit">Submit</Button>
       </form>
-      <h2>Threads</h2>
-      <Button
-        onClick={() => {
-          console.log(posts);
-        }}
-      >
-        posts
-      </Button>
     </div>
   );
 }

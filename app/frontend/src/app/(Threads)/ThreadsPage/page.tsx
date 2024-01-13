@@ -2,7 +2,7 @@
 import Title from "@/components/Title";
 import { Divider } from "@nextui-org/react";
 import Menu from "@/components/SideMenuCom/Menu";
-import Threads from "@/components/ThreadsCom/Threads";
+import Threads from "@/components/ThreadsCom/Posts";
 export default function ThreadsPage() {
   return (
     <div>

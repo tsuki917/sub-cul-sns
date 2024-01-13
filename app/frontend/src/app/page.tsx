@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div>
       <Title />
-      <Divider className="mt-2" />
+      {/* <Divider className="mt-2" /> */}
       <div className=" relative flex flex-row">
         <Menu />
         <div className="w-3/4 " style={{ marginLeft: "25%" }}>
