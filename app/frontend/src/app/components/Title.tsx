@@ -10,7 +10,7 @@ import {
 } from "@nextui-org/react";
 export default function Title() {
   return (
-    <Navbar>
+    <Navbar className="border-b-1 ">
       <NavbarBrand>
         <p className="font-bold text-inherit">XXX</p>
       </NavbarBrand>

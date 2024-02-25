@@ -1,8 +1,8 @@
 "use client";
-import Title from "@/components/Title";
+import Title from "@/app/components/Title";
 import { Divider } from "@nextui-org/react";
-import Menu from "@/components/SideMenuCom/Menu";
-import Threads from "@/components/ThreadsCom/Threads";
+import Menu from "@/app/components/SideMenuCom/Menu";
+import Threads from "@/app/components/ThreadsCom/Posts";
 export default function ThreadsPage() {
   return (
     <div>
