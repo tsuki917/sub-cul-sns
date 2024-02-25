@@ -1,8 +1,8 @@
 "use client";
-import Title from "@/components/Title";
+import Title from "@/app/components/Title";
 import { Divider } from "@nextui-org/react";
-import Menu from "@/components/SideMenuCom/Menu";
-import AcountInfo from "@/components/AcountCom/AcountInfo";
+import Menu from "@/app/components/SideMenuCom/Menu";
+import AcountInfo from "@/app/components/AcountCom/AcountInfo";
 export default function AcountInfoPage() {
   return (
     <div>
