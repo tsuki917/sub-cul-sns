@@ -35,7 +35,7 @@ export default function Post(prop: Props) {
             <ReplyIcon />
             <StarIcon />
             <p className="text-m absolute bottom-0 right-0 ">
-              {prop.post.Day_post.split(".")[0]}
+              {prop.post.CreatedAt.split("T")[0]+" "+prop.post.CreatedAt.split("T")[1].split(".")[0]}
             </p>
           </div>
         </CardFooter>

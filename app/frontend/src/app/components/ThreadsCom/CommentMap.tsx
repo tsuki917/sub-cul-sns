@@ -13,7 +13,7 @@ export default function CommentMap(prop: Props) {
               <h2>{ele.Author}</h2>
               <h2>{ele.Content}</h2>
               <p className="text-m absolute bottom-0 right-0 ">
-                {ele.Day_comment.split(".")[0]}
+                {ele.CreatedAt.split("T")[0]+" "+ele.CreatedAt.split("T")[1].split(".")[0]}
               </p>
             </div>
           </div>

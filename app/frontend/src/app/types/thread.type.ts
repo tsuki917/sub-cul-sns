@@ -2,10 +2,19 @@ export type postType = {
   Author: string;
   Content: string;
   Comments: commentType[];
-  Day_post: string;
+  CreatedAt:string;
+  DeletedAt:string;
+  UpdatedAt:string;
+  ID:number;
 };
+
+
+
 export type commentType = {
   Author: string;
   Content: string;
-  Day_comment: string;
+  CreatedAt:string;
+  DeletedAt:string;
+  UpdatedAt:string;
+  ID:number;
 };

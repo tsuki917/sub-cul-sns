@@ -1,15 +1,23 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Menu from "./components/SideMenuCom/Menu";
 import Title from "./components/Title";
 import { Button} from "@nextui-org/react";
-import Threads from "./components/ThreadsCom/Posts";
+import Threads from "./components/ThreadsCom/Threads";
 import LoginForm from "@/app/components/login/Login";
+import { getCookie,hasCookie,setCookie } from "cookies-next";
+
+
 export default function Home() {
-  
 
   const [isLogin,setIsLogin] = useState<boolean>(false);
+  useEffect(()=>{
+    if(hasCookie("access-token")){
+      setIsLogin(true);
+    }
+  },[]);
+
   return (
     <div>
       {
@@ -25,8 +33,8 @@ export default function Home() {
           </div>
         ):(
           <div>
-            <LoginForm/>
-            <Button onClick={()=>setIsLogin((pre)=>!pre)}>ログイン</Button>
+            <LoginForm setIsLogin={setIsLogin}/>
+            {/* <Button onClick={()=>setIsLogin((pre)=>!pre)}>ログイン</Button> */}
           </div>
         )
       }

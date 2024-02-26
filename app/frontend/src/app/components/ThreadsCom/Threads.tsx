@@ -8,19 +8,19 @@ import React, {
   useRef,
   useState,
 } from "react";
-import Post from "./Post";
+import Thread from "./Thread";
 
 export default function Threads() {
   const [name, setName] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [posts, setPosts] = useState<postType[]>([]);
-  // const [isInit, setIsinit] = useState<boolean>(false);
   const isInit = useRef<boolean>(false);
   useEffect(() => {
     if (isInit.current == false) {
       axios
         .get("http://localhost:8080/getallpost")
         .then((res: AxiosResponse) => {
+          console.log(res.data.posts)
           res.data.posts.forEach((element: postType) => {
             setPosts((prev) => [...prev, element]);
           });
@@ -35,9 +35,7 @@ export default function Threads() {
     const content_str = "content=" + content;
     const name_str = "author=" + name;
     url += "?" + content_str + "&" + name_str;
-    // axios.get(url).then((res) => {
-    //   console.log(res.data.post);
-    // });
+
     setContent("");
     setName("");
   };
@@ -48,7 +46,7 @@ export default function Threads() {
         {posts.map((post, key) => {
           return (
             <div className="border-1" key={key}>
-              <Post post={post} />
+              <Thread post={post} />
             </div>
           );
         })}
