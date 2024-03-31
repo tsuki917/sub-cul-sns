@@ -1,44 +1,32 @@
 "use client";
 import React, { useEffect, useState } from "react";
-
-import Menu from "./components/SideMenuCom/Menu";
-import Title from "./components/Title";
-import { Button} from "@nextui-org/react";
-import Threads from "./components/ThreadsCom/Threads";
 import LoginForm from "@/app/components/login/Login";
-import { getCookie,hasCookie,setCookie } from "cookies-next";
+import { hasCookie} from "cookies-next";
+import SignUpForm from "./components/SignUp/SignUpForm";
+import { useRouter } from "next/navigation";
 
 
 export default function Home() {
 
-  const [isLogin,setIsLogin] = useState<boolean>(false);
+  const [hasAccount,setHasAccount] = useState<boolean>(true);
+  const router = useRouter();
   useEffect(()=>{
-    if(hasCookie("access-token")){
-      setIsLogin(true);
-    }
+    // if(hasCookie("access-token")){
+    //   router.push("/ThreadsPage")
+    // }
   },[]);
 
   return (
     <div>
-      {
-        isLogin?(
-          <div>
-            <Title />
-      <div className=" relative flex flex-row">
-        <Menu />
-        <div className="w-3/4 " style={{ marginLeft: "25%" }}>
-          <Threads />
-        </div>
-      </div>
-          </div>
+        {hasAccount?(
+          <>
+            <LoginForm setHasAccount={setHasAccount}/>
+          </>
         ):(
-          <div>
-            <LoginForm setIsLogin={setIsLogin}/>
-            {/* <Button onClick={()=>setIsLogin((pre)=>!pre)}>ログイン</Button> */}
-          </div>
-        )
-      }
-      
+          <>
+            <SignUpForm  setHasAccount={setHasAccount}/>
+          </>
+        )}
     </div>
   );
 }
