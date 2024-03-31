@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { User } from "@nextui-org/react";
+import { UserContext } from "@/app/providers";
 export default function AcountMenuDisplay() {
+  const {user} = useContext(UserContext);
   return (
     <div
       className="bg-white  rounded-2xl w-1/4
@@ -9,10 +11,10 @@ export default function AcountMenuDisplay() {
     >
       <User
         className="  bg-white m-2 p-2 text-left"
-        name="Jane Doe"
-        description="Product Designer"
+        name={user?.name}
+        description={``}
         avatarProps={{
-          src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
+          src: user?.img_url,
           size: "sm",
         }}
       />

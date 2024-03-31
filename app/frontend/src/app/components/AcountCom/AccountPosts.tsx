@@ -26,7 +26,7 @@ export default function AccountPosts() {
       <CardFooter>
         <div className="flex justify-around border-1 w-full border-black">
           <ReplyIcon />
-          <StarIcon />
+          {/* <StarIcon /> */}
         </div>
       </CardFooter>
     </Card>
