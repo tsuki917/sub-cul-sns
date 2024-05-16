@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import {
   Avatar,
+  Button,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
+  Image,
   User,
 } from "@nextui-org/react";
 import ReplyIcon from "../Icons/ReplyIcon";
@@ -19,9 +21,11 @@ type Props = {
     Post: PostType;
     User: User_Post;
     IsFavo: boolean;
+    ImageURLs: string[];
   },
   id: number,
   set: React.Dispatch<React.SetStateAction<ThreadType[]>>;
+  pick: React.Dispatch<React.SetStateAction<string | undefined>>;
 };
 
 
@@ -65,7 +69,23 @@ export default function Thread(prop: Props) {
 
           />
         </CardHeader>
-        <CardBody className="text-2m">{prop.thread.Post.content}</CardBody>
+        <CardBody className="text-2m">
+          <p>{prop.thread.Post.content}</p>
+          <div className="grid gap-1   mt-4 grid-cols-2 max-w-xl mx-auto">
+            {prop.thread.ImageURLs !== null && prop.thread.ImageURLs.map((ele, key) => {
+              return (
+                <button onClick={() => {
+                  prop.pick(ele)
+                  console.log("teste")
+                }} key={key}>
+                  <Image src={ele} alt="test" height={140} width={280} className="border border-black" />
+                </button>
+              )
+
+            })}
+          </div>
+
+        </CardBody>
         <CardFooter>
           <div className="flex justify-start  w-full relative">
             <ReplyIcon />

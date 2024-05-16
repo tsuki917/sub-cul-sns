@@ -19,6 +19,7 @@ export type ThreadType = {
   Post:PostType,
   User:User_Post,
   IsFavo:boolean
+  ImageURLs:string[]
 }
 
 
