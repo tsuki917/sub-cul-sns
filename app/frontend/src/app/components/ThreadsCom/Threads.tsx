@@ -55,7 +55,7 @@ export default function Threads({ set }: { set: Dispatch<SetStateAction<boolean>
   return (
     <div className="pt-3 pb-5 pr-3 pl-3 relative ">
       {pickUPURL && (
-        <div className="fixed w-screen h-screen top-0 left-0 z-50 flex justify-center items-center bg-opacity-40 bg-black bg-transparent ">
+        <div className="fixed w-screen h-screen top-0 left-0 z-50 flex justify-center items-center bg-opacity-40 bg-black ">
           <div className=" max-w-max">
             <CancelIcon onClick={() => setPickUPURL(undefined)} />
             <Image src={pickUPURL} alt="test" width={500} />
