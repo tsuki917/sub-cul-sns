@@ -1,6 +1,6 @@
 import { Button, Input } from "@nextui-org/react";
 import axios, { AxiosResponse } from "axios";
-import { ThreadType } from "@/app/types/thread.type";
+import { ThreadType } from "@/types/thread.type";
 import React, {
   ChangeEvent,
   Dispatch,
@@ -11,54 +11,55 @@ import React, {
   useState,
 } from "react";
 import plusIcon from "../../../img/plus.png"
-import Thread from "./Thread";
+import Thread from "../ThreadsCom/Thread";
 import { UserContext } from "@/app/providers";
 import PlusIcon from "../Icons/PlusIco";
 import Link from "next/link";
 import { Image } from "@nextui-org/react";
 import CancelIcon from "../Icons/CancelIcon";
-export default function Threads({ set }: { set: Dispatch<SetStateAction<boolean>> }) {
+export default function AccountThreads() {
   const [threads, setThreads] = useState<ThreadType[]>([]);
   const { user } = useContext(UserContext);
   const [pickUPURL, setPickUPURL] = useState<string | undefined>(undefined);
   useEffect(() => {
     if (threads.length == 0) {
       console.log("user")
-      console.log(user?.id)
+      console.log(user?.ID)
       axios
-        .get(`http://localhost:8080/getallpost?userid=${user?.id}`)
+        .get(`http://localhost:8080/getallmypost?userid=${user?.ID}`)
         .then((res: AxiosResponse) => {
           console.log(res.data)
           setThreads(res.data.threads.reverse());
         }).catch((e) => {
           console.log(e)
-
         })
     }
   }, []);
 
-  // const onAddPost = (event: FormEvent<HTMLFormElement>) => {
-  //   console.log("user")
-  //   event.preventDefault();
-  //   console.log(user)
-  //   let url = "http://localhost:8080/createpost";
-  //   axios.post(url, { Content: content, Userid: user?.id }).then((res: AxiosResponse) => {
-  //     console.log(res)
-  //     setContent("")
-  //   }).catch((e) => {
-  //     console.log(e)
-  //   })
-  //   // setContent("");
-  //   // setName("");
-  // };
+  useEffect(() => {
+    console.log("user")
+    console.log(user)
+    if (user?.ID) {
+      axios
+        .get(`http://localhost:8080/getallmypost?userid=${user?.id}`)
+        .then((res: AxiosResponse) => {
+          console.log(res.data)
+          setThreads(res.data.threads.reverse());
+        }).catch((e) => {
+          console.log(e)
+        })
+
+    }
+  }, [user])
+
 
   return (
     <div className="pt-3 pb-5 pr-3 pl-3 relative ">
       {pickUPURL && (
         <div className="fixed w-screen h-screen top-0 left-0 z-50 flex justify-center items-center bg-opacity-40 bg-black ">
-          <div className=" max-w-max">
+          <div className=" max-w-max w-1/2 ">
             <CancelIcon onClick={() => setPickUPURL(undefined)} />
-            <Image src={pickUPURL} alt="test" width={500} />
+            <Image src={pickUPURL} alt="test" width={"w-full"} />
           </div>
         </div>
       )}
@@ -72,9 +73,9 @@ export default function Threads({ set }: { set: Dispatch<SetStateAction<boolean>
           );
         })}
       </div>
-      <div className="fixed top-96 right-3">
+      {/* <div className="fixed top-96 right-3">
         <PlusIcon onClick={() => set((prev) => !prev)} />
-      </div>
+      </div> */}
 
     </div>
   );

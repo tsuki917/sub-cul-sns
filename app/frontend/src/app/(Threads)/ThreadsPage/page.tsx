@@ -1,10 +1,10 @@
 "use client";
-import Title from "@/app/components/Title";
+import Title from "@/components/Title";
 import { Divider } from "@nextui-org/react";
-import Menu from "@/app/components/SideMenuCom/Menu";
-import Threads from "@/app/components/ThreadsCom/Threads";
+import Menu from "@/components/SideMenuCom/Menu";
+import Threads from "@/components/ThreadsCom/Threads";
 import { useState } from "react";
-import AddPost from "@/app/components/ThreadsCom/AddPost";
+import AddPost from "@/components/ThreadsCom/AddPost";
 export default function ThreadsPage() {
   const [isPost, setIsPost] = useState<boolean>(false);
 

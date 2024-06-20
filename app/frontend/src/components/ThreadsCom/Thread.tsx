@@ -7,12 +7,13 @@ import {
   CardFooter,
   CardHeader,
   Image,
+  Link,
   User,
 } from "@nextui-org/react";
 import ReplyIcon from "../Icons/ReplyIcon";
 import StarIcon from "../Icons/StarIcon";
 import Comments from "./Commnets";
-import { PostType, ThreadType, User_Post } from "@/app/types/thread.type";
+import { PostType, ThreadType, User_Post } from "@/types/thread.type";
 import axios from "axios";
 import { UserContext } from "@/app/providers";
 
@@ -56,18 +57,19 @@ export default function Thread(prop: Props) {
     })
   }
 
-
+  console.log(prop)
   return (
     <div className="">
       <Card className="border-1   border-black z-0">
         <CardHeader className="z-0">
-          <User
-            name={prop.thread.User.username}
-            avatarProps={{
-              src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
-            }}
-
-          />
+          <Link href={`/AcountInfoPage?userid=${prop.thread.User.id}`}>
+            <User
+              name={prop.thread.User.username}
+              avatarProps={{
+                src: prop.thread.User.img_path,
+              }}
+            />
+          </Link>
         </CardHeader>
         <CardBody className="text-2m">
           <p>{prop.thread.Post.content}</p>
