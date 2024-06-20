@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { commentType } from "@/app/types/thread.type";
+import { commentType } from "@/types/thread.type";
 import CommentMap from "./CommentMap";
 import { Button } from "@nextui-org/react";
 type Props = {
