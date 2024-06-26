@@ -1,5 +1,4 @@
-"use client";
-import React from "react";
+import React, { useContext, useRef } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -8,11 +7,24 @@ import {
   NavbarItem,
   Button,
 } from "@nextui-org/react";
+import { UserContext } from "@/app/providers";
+import { deleteCookie, getCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 export default function Title() {
+  const { setUser } = useContext(UserContext);
+  const token = useRef<string | undefined>(getCookie("access-token"));
+  const router = useRouter();
+  const logout = () => {
+    deleteCookie("access-token");
+    if (setUser !== undefined) {
+      setUser(null);
+    }
+    router.push("/")
+  }
   return (
     <Navbar className="border-b-1 ">
       <NavbarBrand>
-        <p className="font-bold text-inherit">XXX</p>
+        <p className="font-bold text-inherit">switter</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
@@ -33,8 +45,8 @@ export default function Title() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          <Button as={Link} color="primary" variant="flat">
-            Sign Up
+          <Button as={Link} onClick={() => logout()} color="primary" variant="flat">
+            Log out
           </Button>
         </NavbarItem>
       </NavbarContent>
