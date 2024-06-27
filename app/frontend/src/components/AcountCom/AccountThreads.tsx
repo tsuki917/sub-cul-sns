@@ -17,40 +17,38 @@ import PlusIcon from "../Icons/PlusIco";
 import Link from "next/link";
 import { Image } from "@nextui-org/react";
 import CancelIcon from "../Icons/CancelIcon";
+import { useParams } from "next/navigation";
 export default function AccountThreads() {
   const [threads, setThreads] = useState<ThreadType[]>([]);
   const { user } = useContext(UserContext);
+  const current_user_id = useParams().userid
   const [pickUPURL, setPickUPURL] = useState<string | undefined>(undefined);
   useEffect(() => {
-    if (threads.length == 0) {
-      console.log("user")
-      console.log(user?.ID)
-      axios
-        .get(`http://localhost:8080/getallmypost?userid=${user?.ID}`)
-        .then((res: AxiosResponse) => {
-          console.log(res.data)
-          setThreads(res.data.threads.reverse());
-        }).catch((e) => {
-          console.log(e)
-        })
-    }
-  }, []);
+    console.log(current_user_id)
+    console.log(`http://localhost:8080/getallmypost?userid=${current_user_id}`)
+    axios
+      .get(`http://localhost:8080/getallmypost?userid=${current_user_id}`)
+      .then((res: AxiosResponse) => {
+        console.log(res.data)
+        setThreads(res.data.threads.reverse());
+      }).catch((e) => {
+        console.log(e)
+      })
 
-  useEffect(() => {
-    console.log("user")
-    console.log(user)
-    if (user?.ID) {
-      axios
-        .get(`http://localhost:8080/getallmypost?userid=${user?.id}`)
-        .then((res: AxiosResponse) => {
-          console.log(res.data)
-          setThreads(res.data.threads.reverse());
-        }).catch((e) => {
-          console.log(e)
-        })
+  }, [current_user_id]);
 
-    }
-  }, [user])
+  // useEffect(() => {
+  //   if (user?.ID) {
+  //     axios
+  //       .get(`http://localhost:8080/getallmypost?userid=${user?.id}`)
+  //       .then((res: AxiosResponse) => {
+  //         setThreads(res.data.threads.reverse());
+  //       }).catch((e) => {
+  //         console.log(e)
+  //       })
+
+  //   }
+  // }, [user])
 
 
   return (
