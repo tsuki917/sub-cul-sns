@@ -10,18 +10,12 @@ export default function ThreadsPage() {
 
   return (
     <div className="hidden-scrollbar">
-      <Title />
-      <Divider />
-      <div className=" relative flex flex-row">
-        <Menu />
-        <div className="w-3/4" style={{ marginLeft: "25%" }}>
-          {isPost ? (
-            <AddPost set={setIsPost} />
-          ) : (
-            <Threads set={setIsPost} />
-          )}
-        </div>
-      </div>
+
+      {isPost ? (
+        <AddPost set={setIsPost} />
+      ) : (
+        <Threads set={setIsPost} />
+      )}
     </div>
   );
 }

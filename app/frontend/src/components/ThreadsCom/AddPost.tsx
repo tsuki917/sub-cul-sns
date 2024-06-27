@@ -1,6 +1,6 @@
 import { UserContext } from "@/app/providers";
 import axios, { AxiosResponse } from "axios";
-import React, { Dispatch, FormEvent, SetStateAction, useContext, useMemo, useRef, useState } from "react";
+import React, { Dispatch, FormEvent, SetStateAction, useContext, useEffect, useMemo, useRef, useState } from "react";
 import CancelIcon from "../Icons/CancelIcon";
 import { Button, Image, Input } from "@nextui-org/react";
 
@@ -12,13 +12,20 @@ export default function AddPost({ set }: { set: Dispatch<SetStateAction<boolean>
     const selectedFileArray: File[] = useMemo(() => {
         return imageFiles ? [...Array.from(imageFiles)] : [];
     }, [imageFiles]);
-    const onAddPost = (event: FormEvent<HTMLFormElement>) => {
 
+    useEffect(() => {
+        if (!user) {
+
+        }
+    })
+
+    const onAddPost = (event: FormEvent<HTMLFormElement>) => {
+        console.log("addpost")
         event.preventDefault();
         let url = "http://localhost:8080/createpost";
         const formData = new FormData()
         console.log(content)
-        console.log(user?.id)
+        console.log(user)
         if (content !== undefined && user?.id !== undefined) {
             formData.append("Content", content)
             formData.append("UserId", user?.id.toString())
