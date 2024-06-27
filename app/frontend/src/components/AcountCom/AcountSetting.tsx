@@ -7,11 +7,12 @@ import { UserContext } from "@/app/providers";
 import axios, { AxiosResponse } from "axios";
 import { getCookie } from "cookies-next";
 import { UserType } from "@/types/user.type";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 
 
 export default function AcountInfo() {
   const { user, setUser } = useContext(UserContext);
+  const current_user_id = useParams().userid;
   const [accountDisplay, setAccountDisplay] = useState<UserType>();
   const [username, setUsername] = useState<string>();
   const [usertag, setUsertag] = useState<string>();
@@ -21,11 +22,8 @@ export default function AcountInfo() {
   const [newIconFile, setNewIconFile] = useState<File>();
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const router = useRouter()
-  const search = useSearchParams()
   useEffect(() => {
-    let myuserID = user?.id
     if (user == undefined) {
-
       const token = getCookie("access-token")
       const url = "http://localhost:8080/api/admin/user"
       axios.get(url, {
@@ -43,9 +41,9 @@ export default function AcountInfo() {
 
   useEffect(() => {
     let myuserID = user?.id
-    if (myuserID !== search.get("userid")) {
+    if (myuserID !== current_user_id) {
       console.log("other")
-      const url = "http://localhost:8080/user?id=" + search.get("userid")
+      const url = "http://localhost:8080/user?id=" + current_user_id
       console.log(url)
       axios.get(url).then((res: AxiosResponse) => {
         console.log(res.data)
@@ -174,7 +172,9 @@ export default function AcountInfo() {
                     <Button onClick={() => cancelEdit()}>キャンセル</Button>
                   </div>
                 ) : (
-                  <Button onClick={() => setIsEditing(prev => !prev)}>プロフィール編集</Button>
+                  <>
+                    {current_user_id == user?.ID && <Button onClick={() => setIsEditing(prev => !prev)}>プロフィール編集</Button>}
+                  </>
                 )}
               </div>
             </div>

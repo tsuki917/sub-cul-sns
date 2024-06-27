@@ -69,7 +69,7 @@ export default function AcountMenuDisplay() {
     
     fixed bottom-2 border-1 border-gray-color"
     >
-      {account && <Link href={`/AcountInfoPage?userid=${account.id}`} rel="preload">
+      {account && <Link href={`/AcountInfoPage/${account.id}`} rel="preload">
         <User
           className="  bg-white m-2 p-2 text-left"
           name={account?.name}

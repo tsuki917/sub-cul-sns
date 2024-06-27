@@ -57,12 +57,11 @@ export default function Thread(prop: Props) {
     })
   }
 
-  console.log(prop)
   return (
     <div className="">
       <Card className="border-1   border-black z-0">
         <CardHeader className="z-0">
-          <Link href={`/AcountInfoPage?userid=${prop.thread.User.id}`}>
+          <Link href={`/AcountInfoPage/${prop.thread.User.id}`}>
             <User
               name={prop.thread.User.username}
               avatarProps={{
