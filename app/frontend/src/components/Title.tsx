@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -12,7 +12,6 @@ import { deleteCookie, getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 export default function Title() {
   const { setUser } = useContext(UserContext);
-  const token = useRef<string | undefined>(getCookie("access-token"));
   const router = useRouter();
   const logout = () => {
     deleteCookie("access-token");
